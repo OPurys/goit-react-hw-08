@@ -4,8 +4,8 @@ import css from './LoginPage.module.css';
 
 const LoginPage = () => {
   return (
-    <div>
-      <DocumentTitlele>Login</DocumentTitle>
+    <div className={css.wrapper}>
+      <DocumentTitle>Login</DocumentTitle>
       <LoginForm />
     </div>
   );

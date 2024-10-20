@@ -4,7 +4,7 @@ import css from './RegistrationPage.module.css';
 
 const RegistrationPage = () => {
   return (
-    <div>
+    <div className={css.wrapper}>
       <DocumentTitle>Registration</DocumentTitle>
       <RegistrationForm />
     </div>

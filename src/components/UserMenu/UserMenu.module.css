@@ -1,0 +1,26 @@
+.wrapper {
+  display: flex;
+  gap: 10px;
+  font-size: 20px;
+}
+
+.btn {
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  margin: 0 auto;
+  height: 30px;
+  border-radius: 3px;
+  color: #1a237e;
+  font-weight: 600;
+  background-color: #e4ebec;
+  box-shadow: 1px 1px 1px 1px rgba(26, 35, 126, 0.7);
+  transition: transform 250ms linear, box-shadow 250ms linear;
+
+  &:hover,
+  &:focus {
+    transform: scale(0.97);
+    box-shadow: none;
+  }
+}

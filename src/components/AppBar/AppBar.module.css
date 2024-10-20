@@ -1,0 +1,10 @@
+.header {
+  margin-bottom: 30px;
+  padding: 20px 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #e3f2fd;
+  border-radius: 20px;
+  box-shadow: 3px 3px 3px 3px rgba(26, 35, 126, 0.7);
+}
