@@ -2,7 +2,6 @@ import { Field, Form, Formik } from 'formik';
 import css from './LoginForm.module.css';
 import { useDispatch } from 'react-redux';
 import { login } from '../../redux/auth/operations';
-import { useNavigate } from 'react-router-dom';
 import toast from 'react-hot-toast';
 
 const LoginForm = () => {
@@ -12,14 +11,12 @@ const LoginForm = () => {
   };
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleSubmit = (values, actions) => {
     dispatch(login(values))
       .unwrap()
       .then(res => {
         toast.success(`Welcome, ${res.user.name}`);
-        navigate('/');
       })
       .catch(() => {
         toast.error('Invalid credentials');

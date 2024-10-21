@@ -1,15 +1,20 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import ContactForm from '../../components/ContactForm/ContactForm';
 import SearchBox from '../../components/SearchBox/SearchBox';
-import css from './ContactsPage.module.css';
-import { selectError, selectLoading } from '../../redux/contacts/selectors';
+import { selectLoading } from '../../redux/contacts/selectors';
 import Loader from '../../components/Loader/Loader';
 import ContactList from '../../components/ContactList/ContactList';
 import DocumentTitle from '../../components/DocumentTitle/DocumentTitle';
+import { useEffect } from 'react';
+import { fetchContacts } from '../../redux/contacts/operations';
 
 const ContactsPage = () => {
   const isLoading = useSelector(selectLoading);
-  const isError = useSelector(selectError);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   return (
     <div>
@@ -18,7 +23,6 @@ const ContactsPage = () => {
       <ContactForm />
       <SearchBox />
       {isLoading && <Loader />}
-      {isError && <h2>Error...</h2>}
       <ContactList />
     </div>
   );

@@ -1,7 +1,7 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 
-const goitApi = axios.create({
+export const goitApi = axios.create({
   baseURL: 'https://connections-api.goit.global/',
 });
 
@@ -42,3 +42,21 @@ export const logout = createAsyncThunk('auth/logout', async (_, thunkApi) => {
     return thunkApi.rejectWithValue(error.message);
   }
 });
+
+export const refreshUser = createAsyncThunk(
+  'auth/refresh',
+  async (_, thunkApi) => {
+    const savedToken = thunkApi.getState().auth.token;
+
+    if (!savedToken) {
+      return thunkApi.rejectWithValue('Token does not exist!');
+    }
+    try {
+      setAuthHeader(savedToken);
+      const { data } = await goitApi.get('users/current');
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
+  }
+);
